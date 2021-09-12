@@ -4,3 +4,7 @@ language = "en"
 multilingual = false
 src = "src"
 title = "Data Structures Fall 2021"
+
+[output.html]
+mathjax-support = true
+git-repository-url = "https://github.com/NikitaChampion/Data-Structures"
