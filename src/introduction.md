@@ -5,7 +5,7 @@
 
 * [ПУД](https://www.hse.ru/ba/se/courses/476603295.html/)
 * Канал в telegram для объявлений: [https://t.me/joinchat/SfAuVWFPPwYwNjk6/](https://t.me/joinchat/SfAuVWFPPwYwNjk6/). Здесь будут публиковаться объявления по курсу, выложенные домашки, дедлайны и т.д.
-* Чат в telegram для флуда: TODO
+* Чат в telegram для флуда: [https://t.me/joinchat/RJikQVRfTmYwZTEy/](https://t.me/joinchat/RJikQVRfTmYwZTEy/)
 * Чат в telegram для ссылок на лекции: [https://t.me/joinchat/0i9V9RGxLPRkNmNi/](https://t.me/joinchat/0i9V9RGxLPRkNmNi/)
 * [Styleguide](./styleguide.md) &mdash; обязателен к прочтению и **соблюдению**.
 * [Как сдавать домашние задания](./assignments.md)
