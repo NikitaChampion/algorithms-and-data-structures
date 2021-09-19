@@ -45,7 +45,8 @@ add_executable(my_project main.cpp)
 
 <details><summary>Windows</summary>
 
-На Windows без использования WSL санитайзеры не работают. Вы точно так же можете использовать Clion, но поддержки asan там не будет (если только вы не настроили интеграцию с WSL, см. ссылки выше).
+На Windows без использования WSL санитайзеры не работают. Вы точно так же можете использовать Clion, но поддержки asan там не будет (если только вы не настроили интеграцию с WSL).
+</details>
 
 <details><summary>Mac OS</summary>
 
