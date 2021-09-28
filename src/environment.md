@@ -61,15 +61,15 @@ brew install gcc
 Чтобы проверить, что gcc установился правильно, выполните (11 нужно заменить на версию gсс, установленную brew):
 ```bash
 g++-11 --version  # выведет полную версию g++
-which g++-11  # выведет полный путь к компилятору, например /usr/local/bin/g++-10
+which g++-11  # выведет полный путь к компилятору, например /usr/local/bin/g++-11
 ```
 
 Далее необходимо прописать путь к новому компилятору в настройках Clion. Для этого зайдите в File -> Settings -> Build, Execution, Deployment -> Toolchains и в C++ compiler пропишите полный путь к компилятору.
 
-Далее, **обратите внимание**, что по умолчанию под маком asan не включает проверку на утечки памяти. Чтобы этого избежать, зайдите в CLion -> Preferences -> Build, Execution, Deployment -> Dynamic Analysis Tools -> Sanitizers и в конце строчки AddressSanitizer добавьте строчку
+Далее, **обратите внимание**, что по умолчанию под маком asan не включает проверку на утечки памяти. Чтобы этого избежать, зайдите в CLion -> Preferences -> Build, Execution, Deployment -> Dynamic Analysis Tools -> Sanitizers и в конце строчки AddressSanitizer допишите строчку
 
 ```bash
- detect_leaks=1
+detect_leaks=1
 ```
 
 Иногда на маках при компиляции с asanом может выпадать большое количество ошибок, не связанных с вашим кодом. В этом случае попробуйте добавить флаг `-fsanitize-undefined-trap-on-error` для asan-сборки (переменная `CMAKE_CXX_FLAGS_ASAN` в `CMakeLists.txt`).
