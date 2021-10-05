@@ -80,7 +80,7 @@ _**Это самое большое возможное зло**_. Если в п
     }
     ```
 
-    ```C++
+    ``` C++
     for (auto number : array) {
         statement1;
         statement2;
