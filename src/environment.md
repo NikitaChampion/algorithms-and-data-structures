@@ -151,3 +151,26 @@ detect_leaks=1
 
 Иногда на маках при компиляции с asanом может выпадать большое количество ошибок, не связанных с вашим кодом. В этом случае попробуйте добавить флаг `-fsanitize-undefined-trap-on-error` для asan-сборки (переменная `CMAKE_CXX_FLAGS_ASAN` в `CMakeLists.txt`).
 </details>
+
+## Проверка на соответствие стайлгайду и форматирование кода
+
+Инструкция ниже для Linux и Mac OS.
+
+Вам понадобятся утилиты clang-format и clang-tidy, они обычно есть в стандартных репозиториях (`apt-get install` или `brew install`). Для clang-format вы можете взять конфиг [отсюда](https://github.com/NikitaChampion/Data-Structures/raw/master/.clang-format), а для clang-tidy
+[отсюда](https://github.com/NikitaChampion/Data-Structures/raw/master/.clang-tidy).
+
+Положите эти файлы в директорию с кодом или в домашнюю директорию.
+
+Для форматирования кода выполните
+```bash
+clang-format -i main.cpp
+```
+
+Вы также можете настроить автоматическое форматирование кода с помощью этой утилиты в [CLion](https://www.jetbrains.com/help/clion/clangformat-as-alternative-formatter.html).
+
+Для дополнительных проверок на именование переменных, функций и прочего выполните
+```bash
+clang-tidy main.cpp -- -std=c++17
+```
+
+По умолчанию, когда лежит .clang-tidy в директории с кодом или в домашней директории, CLion подсвечивает неправильное именование переменных, функций и прочего как ошибки.
