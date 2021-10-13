@@ -99,7 +99,14 @@ int main() {
 
 Ниже приведена инструкция для CLion.
 
-Создайте новый проект, зайдите в File -> Settings -> Build, Execution, Deployment -> CMake. Изначально там будет только один профиль Debug. Когда вы нажмете + добавится
+<details><summary>Windows</summary>
+
+На Windows без использования WSL санитайзеры не работают. Вы точно так же можете использовать CLion, но поддержки ASan там не будет (если только вы не настроили интеграцию с WSL, см. ссылки выше).
+</details>
+
+<details><summary>Linux</summary>
+
+Создайте новый проект. Зайдите в File -> Settings -> Build, Execution, Deployment -> CMake. Изначально там будет только один профиль Debug. Когда вы нажмете + добавится
 профиль Release, который пригодится в дальнейшем. Добавьте еще один профиль, назовите его ASAN. В CMake Options запишите
 ```bash
 -DCMAKE_BUILD_TYPE=ASAN
@@ -107,8 +114,8 @@ int main() {
 
 Отредактируйте ваш `CMakeLists.txt`. Он будет выглядеть примерно так:
 ```cmake
-cmake_minimum_required(VERSION 3.12)
-project(my_project)
+cmake_minimum_required(VERSION 3.19)
+project(your_project)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -116,20 +123,47 @@ set(CMAKE_CXX_FLAGS_ASAN "-g -fsanitize=address,undefined -fno-sanitize-recover=
         CACHE STRING "Compiler flags in asan build"
         FORCE)
 
-add_executable(my_project main.cpp)
+add_executable(your_project main.cpp)
 ```
 
-Теперь вы легко можете переключаться между разными видами сборок: Debug для пошагового дебага, Release для тестирования производительности, ASAN для запуска
+Теперь вы легко можете переключаться между разными видами сборок: Debug для пошагового дебага, Release для тестирования производительности, ASan для запуска
 с санитайзерами.
-
-<details><summary>Windows</summary>
-
-На Windows без использования WSL санитайзеры не работают. Вы точно так же можете использовать CLion, но поддержки asan там не будет (если только вы не настроили интеграцию с WSL, см. ссылки выше).
 </details>
 
 <details><summary>Mac OS</summary>
 
-По сравнению с Linux, на маке необходимо произвести ряд дополнительных действий, чтобы получить такое же поведение. Для начала обязательно установите `gcc` из `brew`, никогда не используйте системный `gcc`. Выполните
+По сравнению с Linux, на маке необходимо произвести ряд дополнительных действий, чтобы получить такое же поведение, как там.
+
+Создайте новый проект. Зайдите в File -> Settings -> Build, Execution, Deployment -> CMake. Изначально там будет только один профиль Debug. Когда вы нажмете + добавится
+профиль Release, который пригодится в дальнейшем. Добавьте еще два профиля, назовите их ASAN и UBSAN. В CMake Options запишите
+```bash
+-DCMAKE_BUILD_TYPE=ASAN
+```
+и
+```bash
+-DCMAKE_BUILD_TYPE=UBSAN
+```
+
+
+Отредактируйте ваш `CMakeLists.txt`. Он будет выглядеть примерно так:
+```cmake
+cmake_minimum_required(VERSION 3.19)
+project(your_project)
+
+set(CMAKE_CXX_STANDARD 17)
+
+set(CMAKE_CXX_FLAGS_ASAN "-g -fsanitize=address"
+        CACHE STRING "Compiler flags in asan build"
+        FORCE)
+
+set(CMAKE_CXX_FLAGS_UBSAN "-g -fsanitize=undefined"
+        CACHE STRING "Compiler flags in ubsan build"
+        FORCE)
+
+add_executable(your_project main.cpp)
+```
+
+Затем обязательно установите `gcc` из `brew`, никогда не используйте системный `gcc`. Выполните
 
 ```bash
 brew install gcc
@@ -143,13 +177,14 @@ which g++-11  # выведет полный путь к компилятору, 
 
 Далее необходимо прописать путь к новому компилятору в настройках CLion. Для этого зайдите в CLion -> Preferences -> Build, Execution, Deployment -> Toolchains и в C++ compiler пропишите полный путь к компилятору.
 
-Далее, **обратите внимание**, что по умолчанию под маком asan не включает проверку на утечки памяти. Чтобы этого избежать, зайдите в CLion -> Preferences -> Build, Execution, Deployment -> Dynamic Analysis Tools -> Sanitizers и в конце строчки AddressSanitizer допишите строчку
+Далее, **обратите внимание**, что по умолчанию под маком ASan не включает проверку на утечки памяти. Чтобы этого избежать, зайдите в CLion -> Preferences -> Build, Execution, Deployment -> Dynamic Analysis Tools -> Sanitizers и в конце строчки AddressSanitizer допишите строчку
 
 ```bash
 detect_leaks=1
 ```
 
-Иногда на маках при компиляции с asanом может выпадать большое количество ошибок, не связанных с вашим кодом. В этом случае попробуйте добавить флаг `-fsanitize-undefined-trap-on-error` для asan-сборки (переменная `CMAKE_CXX_FLAGS_ASAN` в `CMakeLists.txt`).
+Теперь вы легко можете переключаться между разными видами сборок: Debug для пошагового дебага, Release для тестирования производительности, ASan для запуска
+для отлавливаний ошибок с памятью и UBSan для отлавливаний undefined behaviour.
 </details>
 
 ## Проверка на соответствие стайлгайду и форматирование кода
