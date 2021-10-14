@@ -1,0 +1,64 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: circleci/rust:latest
+    steps:
+      - checkout
+      - run:
+          name: Version information
+          command: rustc --version; cargo --version; rustup --version
+      - run:
+          name: Install mdbook
+          command: cargo install mdbook
+      - run:
+          name: Build with mdbook
+          command: mdbook build
+      - run:
+          name: Copy circleci config
+          command: cp -r .circleci ./book
+      - persist_to_workspace:
+          root: book
+          paths:
+            - "*"
+            - ".circleci/*"
+            - ".nojekyll"
+  deploy:
+    docker:
+      - image: circleci/rust:latest
+    environment:
+      - TARGET_BRANCH: gh-pages
+    working_directory: ~/checkout
+    steps:
+      - checkout
+      - run:
+          name: Setup Git user
+          command: bash ./.circleci/setup_user.sh $USER_EMAIL $USER_NAME
+      - run:
+          name: Prepare release branch
+          command: bash ./.circleci/nuke_branch.sh $TARGET_BRANCH
+      - attach_workspace:
+          at: .
+      - add_ssh_keys:
+          fingerprints:
+            - "24:1f:3b:e2:0d:49:4d:3b:46:98:21:69:6d:5d:8e:6f"
+      - deploy:
+          name: Deploy release
+          command: bash ./.circleci/deploy.sh $TARGET_BRANCH $CIRCLE_SHA1
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
