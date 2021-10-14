@@ -5,7 +5,7 @@ set -o nounset
 set -o pipefail
 
 if [[ $# -lt 1 ]]; then
-    echo "Error: Not enought arguments! 1 argument was expected..."
+    echo "Error: Not enough arguments! 1 argument was expected..."
     exit 1
 fi
 

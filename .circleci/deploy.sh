@@ -5,7 +5,7 @@ set -o nounset
 set -o pipefail
 
 if [[ $# -lt 2 ]]; then
-    echo "Error: Not enought arguments! $# out of 2 required..."
+    echo "Error: Not enough arguments! $# out of 2 required..."
     exit 1
 fi
 
