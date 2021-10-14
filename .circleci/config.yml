@@ -42,7 +42,7 @@ jobs:
           at: .
       - add_ssh_keys:
           fingerprints:
-            - "ab:ff:85:6e:b3:d2:be:ab:86:31:66:3c:8c:2a:0a:90"
+            - "7f:dc:71:15:10:a2:40:cb:8e:65:10:f1:d7:3d:c0:d2"
       - deploy:
           name: Deploy release
           command: bash ./.circleci/deploy.sh $TARGET_BRANCH $CIRCLE_SHA1
