@@ -3,7 +3,7 @@
 ## Основные правила
 
 Прежде, чем писать какой-либо код, обязательно прочитайте C++ Style Guide, на нашем курсе мы требуем полного выполнения 
-[Google C++ Style Guide](http://google.github.io/styleguide/cppguide.html)
+[Google C++ Style Guide](http://google.github.io/styleguide/cppguide.html) с небольшими измениями (касающихся нейминга и прочего; смотрите далее)
 
 <details><summary>Какие пункты из Google C++ Style Guide наиболее важны:</summary>
 
@@ -19,7 +19,7 @@
   * Functions
     * [Parameter Ordering](http://google.github.io/styleguide/cppguide.html#Function_Parameter_Ordering)
     * [Write Short Functions](http://google.github.io/styleguide/cppguide.html#Write_Short_Functions)
-    * [Reference Arguments](http://google.github.io/styleguide/cppguide.html#Reference_Arguments) (с оговоркой про выходные параметры примитивных типов в [п. 14](#input_params))
+    * [Reference Arguments](http://google.github.io/styleguide/cppguide.html#Reference_Arguments) (с оговоркой про выходные параметры примитивных типов в [п. 17](#input_params))
   * Other C++ Features
     * [Casting](http://google.github.io/styleguide/cppguide.html#Casting)
     * [Preincrement and Predecrement](http://google.github.io/styleguide/cppguide.html#Preincrement_and_Predecrement)
@@ -49,7 +49,7 @@ _**Это самое большое возможное зло**_. Если в п
 На код должно быть приятно смотреть, его должно быть легко читать. Вы его пишете один раз, сохраняете, после чего его читают много раз, поэтому выгодно потратить при написании немного времени на приведение кода в порядок, чтобы впоследствии сократить своё и чужое время на чтение.
 Простые правила ниже служат для улучшения визуального восприятия.
 
-  * Используйте 4 пробела для отступа. Данный размер отступа является наиболее распространенным, поэтому используйте его всюду для единообразия. 4 пробела также является оптимальным размером для отступа согласно [NASA](http://homepages.inf.ed.ac.uk/dts/pm/Papers/nasa-c-style.pdf).
+  * Используйте 4 пробела для отступа. Данный размер отступа является наиболее распространенным, поэтому используйте его всюду для единообразия. 3-4 пробела также являются оптимальными размерами для отступа согласно [NASA](https://ntrs.nasa.gov/api/citations/20080039927/downloads/20080039927.pdf).
   * Вокруг всех бинарных операторов (`=, ==, +, -, *, /, >, <<` и др.) должны быть пробелы с обеих сторон. Исключением являются операторы `., ->, ::`.
   * После запятой должен быть пробел. 
   * Между закрывающейся круглой скобкой и открывающейся фигурной должен быть пробел.
@@ -144,25 +144,25 @@ _**Это самое большое возможное зло**_. Если в п
     using std::string;
     using std::vector;
 
-    vector<string> Input() {
+    vector<string> input() {
         size_t rows;
         std::cin >> rows;
         vector<string> table;
         table.reserve(rows);
         for (size_t row = 0; row < rows; ++row) {
-            std::string line;
+            string line;
             std::cin >> line;
             table.push_back(line);
         }
         return table;
     }
 
-    vector<string> Process(vector<string> table) {
+    vector<string> process(vector<string> table) {
         std::reverse(table.begin(), table.end());
         return table;
     }
 
-    void Output(const vector<string>& table) {
+    void output(const vector<string>& table) {
         for (const auto& row : table) {
             std::cout << row << std::endl;
         }
@@ -171,9 +171,9 @@ _**Это самое большое возможное зло**_. Если в п
     int main() {
         std::ios_base::sync_with_stdio(false);
         std::cin.tie(nullptr);
-        const auto& table = Input();
-        table = Process(table);
-        Output(table);
+        const auto& table = input();
+        table = process(table);
+        output(table);
         return 0;
     }
     ```
@@ -246,7 +246,7 @@ _**Это самое большое возможное зло**_. Если в п
     Соответственно, если вам нужно вызвать функцию, в которую вы должны передать индекс первого и последнего элемента вектора, то делайте это так:
 
     ``` C++
-    SomeFunction(0, static_cast<int>(container.size()) - 1)
+    someFunction(0, static_cast<int>(container.size()) - 1)
     ```
     По-хорошему, здесь надо бы еще проверять, что в контейнере что-то есть, но к int'у приводить надо в любом случае, иначе появляются неочевидные баги. </details>
 16. Не пользуйтесь макросами для определения констант. <details><summary>Подробнее</summary>
@@ -270,14 +270,14 @@ _**Это самое большое возможное зло**_. Если в п
     <details><summary>Примеры:</summary>
 
     ``` C++
-    void Input(std::vector<point>* sequence, int& points_to_cover);
+    void input(std::vector<point>* sequence, int& points_to_cover);
 
-    void FindMaximumsInSlidingWindow(
+    void findMaximumsInSlidingWindow(
         const std::vector<int>& sequence, 
         const std::string& shifts, 
         vector<int>* maximums);
 
-    double FindMinimumCoveringCircleRadius(
+    double findMinimumCoveringCircleRadius(
         const std::vector<point>& points, 
         int points_to_cover);
     ```
@@ -287,17 +287,17 @@ _**Это самое большое возможное зло**_. Если в п
     ``` C++
     std::vector<int> sequence;
     int points_to_cover;
-    Input(&sequence, points_to_cover);
+    input(&sequence, points_to_cover);
     ...
     ...
     std::vector<int> sequence;
     std::string shifts;
-    Input(&sequence, &shifts);
+    input(&sequence, &shifts);
     std::vector<int> maximums;
-    FindMaximumsInSlidingWindow(sequence, shifts, &maximums);
+    findMaximumsInSlidingWindow(sequence, shifts, &maximums);
     ...
     ...
-    double min_radius = FindMinimumCoveringRadius(points, points_to_cover);
+    double min_radius = findMinimumCoveringRadius(points, points_to_cover);
     ```
 
     Обратите внимание на амперсанды & перед переменными, в которые записывается результат вызова функции.
@@ -305,7 +305,7 @@ _**Это самое большое возможное зло**_. Если в п
     Пример:
 
     ``` C++
-    std::vector<int> ReadNumbers(std::istream& input_stream = std::cin) {
+    std::vector<int> readNumbers(std::istream& input_stream = std::cin) {
         size_t sequence_length;
         input_stream >> sequence_length;
         std::vector<int> numbers(sequence_length);
@@ -326,7 +326,7 @@ _**Это самое большое возможное зло**_. Если в п
     Пример:
 
     ``` C++
-    std::vector<int> Unique(std::vector<int> numbers) {
+    std::vector<int> unique(std::vector<int> numbers) {
         // here we sort a copy of given numbers,
         // so that the user does not lose his data
         std::sort(numbers.begin(), numbers.end());
@@ -346,7 +346,7 @@ _**Это самое большое возможное зло**_. Если в п
     };
 
     // Compares first by x-coordinate, then by y-coordinate
-    bool operator < (const Point& first, const Point& second) {
+    bool operator<(const Point& first, const Point& second) {
         if (first.x != second.x) {
             return first.x < second.x;
         }
@@ -359,15 +359,15 @@ _**Это самое большое возможное зло**_. Если в п
             : time_(time), average_speed_(average_speed)
         {}
         
-        double Time() const {
+        double time() const {
             return time_;
         }
         
-        double AverageSpeed() const {
+        double averageSpeed() const {
             return average_speed_;
         }
         
-        double Distance() const {
+        double distance() const {
             return time_ * average_speed_;
         }
 
@@ -386,7 +386,7 @@ _**Это самое большое возможное зло**_. Если в п
     Создание двумерного вектора размером `rows * columns`, заполненного значением 100:
 
     ``` C++
-    std::vector< vector<int> > cache(
+    std::vector<std::vector<int>> cache(
         rows,
         std::vector<int>(columns, 100));
     ```
@@ -424,13 +424,13 @@ _**Это самое большое возможное зло**_. Если в п
     ``` C++
     #include <random>
 
-    template<class Iterator>
-    void Sort(Iterator begin, Iterator end) {
+    template <class Iterator>
+    void sort(Iterator begin, Iterator end) {
         std::mt19937 generator;
-        QuickSort(begin, end, generator);
+        quickSort(begin, end, generator);
     }
-    template<class Iterator, class RandomGenerator>
-    void QuickSort(Iterator begin, Iterator end, RandomGenerator& generator) {
+    template <class Iterator, class RandomGenerator>
+    void quickSort(Iterator begin, Iterator end, RandomGenerator& generator) {
         ...
     }
     ```
@@ -439,18 +439,18 @@ _**Это самое большое возможное зло**_. Если в п
     при вычислениях в вещественных типах накапливается погрешность, вследствие чего равные по сути числа, вычисленные с помощью разной последовательности действий, могут получить различные значения в типах `float` и `double`, и даже `a < b` может измениться на `b < a`. Погрешность вычислений можно оценить, используя точные знания о том, как именно выполняются арифметические операции, а также как происходят вычисления в используемых вами функциях. Обычно делать этого точно не нужно, т.к. точность типа `double` позволяет хранить 15-16 знаков, а требуемая в задаче точность обычно порядка \\(10^{-6}\\) или \\(10^{-9}\\), но не меньше. Однако для того, чтобы корректно сравнивать числа, следует использовать порог сравнения. Примеры:
 
     ``` C++
-    const double COMPARISON_THRESHOLD = 1e-8;
+    const double kComparisonThreshold = 1e-8;
 
-    bool Less(double first, double second) {
-        return first < second - COMPARISON_THRESHOLD;
+    bool less(double first, double second) {
+        return first < second - kComparisonThreshold;
     }
 
-    bool LessOrEqual(double first, double second) {
-        return first < second + COMPARISON_THRESHOLD;
+    bool lessOrEqual(double first, double second) {
+        return first < second + kComparisonThreshold;
     }
 
-    bool Equal(double first, double second) {
-        return fabs(first - second) < COMPARISON_THRESHOLD;
+    bool equal(double first, double second) {
+        return fabs(first - second) < kComparisonThreshold;
     }
     ```
     </details>
@@ -473,11 +473,11 @@ _**Это самое большое возможное зло**_. Если в п
 4. Никогда не используйте «магические константы» в коде. Если у вас где-то в коде встречаются, например, `'a'` и `'z'`, означающие минимальный и максимальный символ алфавита, то их надо заменить на именованные константы. Например так:
 
     ``` C++
-    const char MIN_LETTER = 'a';
-    const char MAX_LETTER = 'z';
+    const char kMinLetter = 'a';
+    const char kMaxLetter = 'z';
     ...
 
-    for (char letter = MIN_LETTER; letter <= MAX_LETTER; ++letter) {
+    for (char letter = kMinLetter; letter <= kMaxLetter; ++letter) {
         ...
     }
     ...
@@ -502,9 +502,9 @@ _**Это самое большое возможное зло**_. Если в п
     * If transform map doesn't contain input[i] and defaultSymbol == 0,
     *   function throws TransformError.
     */
-    string TransformString(
-        const string& input,
-        const map<char, char>& transform,
+    string transformString(
+        const std::string& input,
+        const std::map<char, char>& transform,
         const char defaultSymbol);
     ```
 
