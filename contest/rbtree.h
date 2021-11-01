@@ -1,6 +1,6 @@
 #include <iostream>
 
-template<class ValueType>
+template <class ValueType>
 class RBTree {
 public:
     RBTree();
