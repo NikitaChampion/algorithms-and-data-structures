@@ -3,27 +3,51 @@
 template <class ValueType>
 class RBTree {
 public:
-    RBTree();
+    RBTree() {
+        throw "Not implemented";
+    }
 
-    RBTree(const RBTree &other);
+    RBTree(const RBTree &other) {
+        throw "Not implemented";
+    }
 
-    RBTree &operator=(const RBTree &other);
+    RBTree &operator=(const RBTree &other) {
+        throw "Not implemented";
+    }
 
-    ~RBTree();
+    ~RBTree() {
+        throw "Not implemented";
+    }
 
-    size_t size() const;
+    size_t size() const {
+        throw "Not implemented";
+    }
 
-    bool empty() const;
+    bool empty() const {
+        throw "Not implemented";
+    }
 
-    void insert(const ValueType &value);
+    void insert(const ValueType &value) {
+        throw "Not implemented";
+    }
 
-    void erase(const ValueType &value);
+    void erase(const ValueType &value) {
+        throw "Not implemented";
+    }
 
-    ValueType *lower_bound(const ValueType &value) const;  // NOLINT
+    ValueType *lower_bound(const ValueType &value) const {  // NOLINT
+        throw "Not implemented";
+    }
 
-    ValueType *find(const ValueType &value) const;
+    ValueType *find(const ValueType &value) const {
+        throw "Not implemented";
+    }
 
-    ValueType *traversal() const;
+    ValueType *traversal() const {
+        throw "Not implemented";
+    }
+
 private:
     // something
 };
+
