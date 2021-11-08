@@ -24,6 +24,7 @@ public:
     ValueType *find(const ValueType &value) const;
 
     ValueType *traversal() const;
+
 private:
-    // something
+    // your code
 };
