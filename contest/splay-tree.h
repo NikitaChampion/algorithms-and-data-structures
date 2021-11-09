@@ -13,11 +13,11 @@ public:
 
     ~SplayTree();
 
-    void insert(int);
+    void insert(int key);
 
-    Node *find() const;
+    Node *find(int key) const;
 
-    int splay(Node *);
+    int splay(Node *node);
 
     int getHeight() const;
 
