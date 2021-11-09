@@ -15,7 +15,7 @@ public:
 
     void insert(int);
 
-    Node *find() const;
+    Node *find(int) const;
 
     int splay(Node *);
 
