@@ -19,7 +19,7 @@ public:
 
     int splay(Node *);
 
-    int calcHeight() const;
+    int getHeight() const;
 
 private:
     // your code
