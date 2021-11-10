@@ -1,8 +1,8 @@
-class ВPlusTree {
+class BPlusTree {
 public:
-    explicit ВPlusTree(int);
+    explicit BPlusTree(int);
 
-    ~ВPlusTree();
+    ~BPlusTree();
 
     void insert(int);
 
