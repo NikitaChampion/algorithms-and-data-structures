@@ -38,13 +38,13 @@ std::vector<std::string> getUsers(size_t max_count) {
             break;
         }
         if (!is_valid) {
-            std::cerr << "Too long username " << cur_line << "\n";
+            std::cout << "Too long username " << cur_line << '\n';
             exit(0);
         }
         if (checkUserName(cur_line)) {
             users.push_back(cur_line);
         } else {
-            std::cerr << "Incorrect username " << cur_line << "\n";
+            std::cout << "Incorrect username " << cur_line << '\n';
             exit(0);
         }
     }
@@ -81,9 +81,9 @@ int main() {
 
     auto end_time = std::clock();
     double spent = static_cast<double>(end_time - start_time) / CLOCKS_PER_SEC;
-    std::cerr << "Spent " << spent << " seconds\n";
+    std::cout << "Spent " << spent << " seconds\n";
     if (spent > 0.75) {
-        std::cerr << "Shit happens\n";
+        std::cout << "Shit happens\n";
         return 1;
     }
 

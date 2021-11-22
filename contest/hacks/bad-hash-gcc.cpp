@@ -38,13 +38,13 @@ std::vector<std::string> getUsers(size_t max_count) {
             break;
         }
         if (!is_valid) {
-            std::cout << "Too long username " << cur_line << "\n";
+            std::cout << "Too long username " << cur_line << '\n';
             exit(0);
         }
         if (checkUserName(cur_line)) {
             users.push_back(cur_line);
         } else {
-            std::cout << "Incorrect username " << cur_line << "\n";
+            std::cout << "Incorrect username " << cur_line << '\n';
             exit(0);
         }
     }
