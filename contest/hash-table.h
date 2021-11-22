@@ -7,7 +7,7 @@ struct Node {
     ValueType value_;
     Node *next_;
 
-    Node(KeyType key, ValueType value);
+    Node(KeyType, ValueType);
 };
 
 // Хеш-таблица
@@ -15,18 +15,18 @@ template <class KeyType, class ValueType, class Func = std::hash<KeyType>>
 class HashTable {
 public:
     HashTable();
-    HashTable(Func f);
-    HashTable(size_t size, double factor, Func f=std::hash<KeyType>());
+    HashTable(Func);
+    HashTable(size_t, double, Func = std::hash<KeyType>());
 
     ~HashTable();
 
-    void insert(KeyType key, ValueType value);
-    ValueType *search(KeyType key);
-    void remove(KeyType key);
+    void insert(KeyType, ValueType);
+    ValueType *search(KeyType);
+    void erase(KeyType);
 
-    Node<KeyType, ValueType>& operator [](uint64_t hash);
-    Node<KeyType, ValueType> at(uint64_t hash);
-    
+    Node<KeyType, ValueType> &operator[](uint64_t);
+    Node<KeyType, ValueType> at(uint64_t);
+
     size_t size() const;
     size_t capacity() const;
 };
