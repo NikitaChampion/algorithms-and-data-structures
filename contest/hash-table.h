@@ -21,7 +21,7 @@ public:
     ~HashTable();
 
     void insert(KeyType, ValueType);
-    ValueType *search(KeyType);
+    ValueType *find(KeyType);
     void erase(KeyType);
 
     Node<KeyType, ValueType> &operator[](uint64_t);
