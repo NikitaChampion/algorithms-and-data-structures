@@ -1,4 +1,4 @@
-# Data Structures [fall 2021]
+# Data Structures [fall 2021 - spring 2022]
 
 [![CircleCI branch](https://img.shields.io/circleci/build/github/NikitaChampion/data-structures)](https://app.circleci.com/pipelines/github/NikitaChampion/data-structures)
 
