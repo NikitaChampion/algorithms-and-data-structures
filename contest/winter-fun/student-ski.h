@@ -7,11 +7,11 @@ class Ski {
 
     friend class ReadWriter;
 
-private:
-    int length_;
-
 public:
     int id;
+
+private:
+    int length_;
 };
 
 class Student {
@@ -19,11 +19,11 @@ class Student {
 
     friend class ReadWriter;
 
-private:
-    int height_;
-
 public:
     int id;
+
+private:
+    int height_;
 };
 
 int compare(const Student &student, const Ski &ski) {
