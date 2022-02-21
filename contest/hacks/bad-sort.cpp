@@ -33,7 +33,7 @@ int main() {
     }
 
     if (spent > 0.04) {
-        std::cout << "this sort sucks\n";
+        std::cout << "Shit happens\n";
         return 1;
     }
     return 0;
