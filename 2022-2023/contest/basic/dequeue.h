@@ -12,7 +12,7 @@ public:
 
     int back() const;
 
-    size_t size() const
+    size_t size() const;
 
 private:
     // your code
