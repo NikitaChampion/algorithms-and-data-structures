@@ -2,8 +2,8 @@
 authors = ["Nikita Igumnov"]
 language = "en"
 multilingual = false
-src = "src"
-title = "Data Structures Fall 2021"
+src = "2022-2023/src"
+title = "Algorithms and Data Structures"
 
 [output.html]
 mathjax-support = true
