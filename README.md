@@ -1,4 +1,4 @@
-# Data Structures
+# Algorithms and Data Structures
 
 Тут находится страница курса АиСД [ВШЭ](https://hse.ru).
 
