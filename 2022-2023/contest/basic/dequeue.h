@@ -1,3 +1,5 @@
+#include <iostream>
+
 class Dequeue {
 public:
     void pushBack(int value);
@@ -5,6 +7,12 @@ public:
     void pushMiddle(int value);
  
     int popFront();
+
+    int front() const;
+
+    int back() const;
+
+    size_t size() const
 
 private:
     // your code
