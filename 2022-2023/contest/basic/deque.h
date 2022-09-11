@@ -1,6 +1,6 @@
 #include <iostream>
 
-class Dequeue {
+class Deque {
 public:
     void pushBack(int value);
  
