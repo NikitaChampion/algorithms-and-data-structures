@@ -1,7 +1,5 @@
 # Data Structures [fall 2021 - spring 2022]
 
-[![CircleCI branch](https://img.shields.io/circleci/build/github/NikitaChampion/data-structures)](https://app.circleci.com/pipelines/github/NikitaChampion/data-structures)
-
 Тут находится страница курса АиСД [ВШЭ](https://hse.ru).
 
 Содержимое можно смотреть [здесь](https://nikitachampion.github.io/data-structures/).
