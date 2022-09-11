@@ -210,8 +210,8 @@ detect_leaks=1
 
 Инструкция ниже для Linux и Mac OS.
 
-Вам понадобятся утилиты clang-format и clang-tidy, они обычно есть в стандартных репозиториях (`apt-get install` или `brew install`). Для clang-format вы можете взять конфиг [отсюда](https://raw.githubusercontent.com/NikitaChampion/Data-Structures/main/codestyle/.clang-format), а для clang-tidy
-[отсюда](https://raw.githubusercontent.com/NikitaChampion/Data-Structures/main/codestyle/.clang-tidy).
+Вам понадобятся утилиты clang-format и clang-tidy, они обычно есть в стандартных репозиториях (`apt-get install` или `brew install`). Для clang-format вы можете взять конфиг [отсюда](https://github.com/NikitaChampion/algorithms-and-data-structures/blob/main/2022-2023/codestyle/.clang-format), а для clang-tidy
+[отсюда](https://github.com/NikitaChampion/algorithms-and-data-structures/blob/main/2022-2023/codestyle/.clang-tidy).
 
 Положите эти файлы в директорию с кодом или в домашнюю директорию.
 
