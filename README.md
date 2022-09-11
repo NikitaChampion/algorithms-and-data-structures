@@ -1,4 +1,4 @@
-# Data Structures [fall 2021 - spring 2022]
+# Data Structures
 
 Тут находится страница курса АиСД [ВШЭ](https://hse.ru).
 
