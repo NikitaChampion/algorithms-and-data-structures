@@ -3,11 +3,8 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Как сдавать домашние задания - Data Structures Fall 2021</title>
-
-
+        <title>Как сдавать домашние задания - Algorithms and Data Structures</title>
         <!-- Custom HTML head -->
-        
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,18 +16,15 @@
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
         <link rel="stylesheet" href="css/print.css" media="print">
-
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
         <link rel="stylesheet" href="fonts/fonts.css">
-
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
         <link rel="stylesheet" href="tomorrow-night.css">
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-
         <!-- MathJax -->
         <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
@@ -91,7 +85,7 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
@@ -112,7 +106,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">Data Structures Fall 2021</h1>
+                    <h1 class="menu-title">Algorithms and Data Structures</h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
@@ -121,7 +115,6 @@
                         <a href="https://github.com/NikitaChampion/Data-Structures" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-
                     </div>
                 </div>
 
@@ -135,7 +128,6 @@
                         </ul>
                     </div>
                 </div>
-
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
@@ -168,14 +160,14 @@
 <li><strong>CE</strong> — Compilation Error — ваша программа не компилируется на сервере. Чтобы узнать, почему, нажмите на ссылку «отчет» (она появляется при наведении курсора на строку посылки) и посмотрите, какие ошибки нашел компилятор.</li>
 <li><strong>WA</strong> — Wrong Answer — на некотором тесте программа выдала неверный ответ. Вам не предоставляется возможность увидеть, что это был за тест. Внимательно посмотрите на ограничения в задаче, попробуйте придумать свой тест, на котором ответ будет неправильный.</li>
 <li><strong>PE</strong> — Presentation Error — ошибка представления. Например, просили вывести число, а выведена строка. В этом случае вы можете получить <strong>Wrong Answer</strong> либо <strong>Presentation error</strong>, это не гарантируется заранее.</li>
-<li><strong>TL</strong> — Time Limit exceeded — ваша программа работает слишком долго. Значит, у вас неправильное асимптотически решение, так как таймлимиты будут выставляться в 1,5–3 раза больше, чем время работы авторского решения на максимальном тесте, и этого должно хватать любому правильному решению.</li>
+<li><strong>TL</strong> — Time Limit exceeded — ваша программа работает слишком долго. Значит, у вас неправильное асимптотически решение, так как таймлимиты будут выставляться в 1,5–2 раза больше, чем время работы авторского решения на максимальном тесте, и этого должно хватать любому правильному решению.</li>
 <li><strong>ML</strong> — Memory Limit exceeded — ваша программа использует слишком много памяти.</li>
 <li><strong>RE</strong> — Runtime Error — произошла ошибка выполнения. Неочевидные возможные причины: чтение из файла вместо стандартного ввода; запись в файл вместо стандартного вывода; переполнение стека. Очевидные причины: выход за границы массива, деление на ноль.</li>
 </ul>
 <p><strong>При сдаче домашних задач баллы за посылки и штраф по времени не снимаются. Проверяется последний код, который набрал больше всего баллов.</strong></p>
 <h3 id="Сроки"><a class="header" href="#Сроки">Сроки</a></h3>
 <p>На сдачу домашних задач дается примерно 9,5 суток с момента выдачи контеста.
-Все дедлайны будут прописаны на странице курса в <a href="https://t.me/joinchat/SfAuVWFPPwYwNjk6">телеграмме</a>.</p>
+Все дедлайны будут прописаны на странице курса в <a href="https://t.me/algosy2022">телеграмме</a>.</p>
 <h3 id="code-review"><a class="header" href="#code-review">Code Review</a></h3>
 <p>После тестирования в системе код поступает на внутреннюю проверку. Проверяется каждая задача отдельно и независимо (если противное явно не указано в условии и не было соответствующего объявления), <strong>максимальный балл за задачу — 10</strong>.</p>
 <p>В основном код проверяется на</p>
@@ -184,11 +176,11 @@
 <li>Корректность (код должен работать корректно на всех возможных входных данных, которые подходят под условие и ограничения в задаче)</li>
 <li>Оптимальность (код должен быть оптимальным (не должна использоваться лишняя память и т.д.))</li>
 </ol>
-<h3 id="Актуальные-критерии-оценки"><a class="header" href="#Актуальные-критерии-оценки">Актуальные критерии оценки</a></h3>
+<h3 id="Текущие-критерии-оценки"><a class="header" href="#Текущие-критерии-оценки">Текущие критерии оценки</a></h3>
 <ol start="0">
 <li>Нет решения — <strong>0 баллов (база)</strong></li>
+<li>Несоответствие кодстайлу <strong>0 баллов итог</strong></li>
 <li>Прохождение тестов из условия / компиляция <strong>+ 1 балл</strong>, в зависимости от типа задачи</li>
-<li>Несоответствие кодстайлу <strong>- 1 балл</strong></li>
 <li>Прохождение k тестов <strong>+ 7 баллов</strong>, в зависимости от групп в задаче</li>
 <li>Код выдает правильный ответ для любых входных данных, подходящих под условие и ограничения в задаче (offline-тестирование) <strong>+ 2 балла</strong></li>
 </ol>
@@ -197,6 +189,7 @@
 <p>При выявлении <em>списывания</em> списанная задача <strong>обнуляется</strong> всем участникам списывания. Если в контесте &gt; 1 списанной задачи, то зануляется весь контест.</p>
 <p>При использовании <em>читерства</em> в задаче она также <strong>зануляется</strong> (к примеру, в задаче явным образом запрещалось использовать <code>std::sort</code> или что-то аналогичное, а Вы взяли и заюзали каким-то хитрым образом).</p>
 <p>Если Вы не согласны с результатом проверки, то можете проапеллировать результат, написав проверяющему в vk / tg.</p>
+<p>Пункты 3 и 4 не фиксируют кол-во баллов. От задачи к задаче разбалловка баллов в 3 и 4 может меняться.</p>
 <h2 id="КДЗ"><a class="header" href="#КДЗ">КДЗ</a></h2>
 <p>TODO</p>
 <h2 id="Работа-на-семинарах"><a class="header" href="#Работа-на-семинарах">Работа на семинарах</a></h2>
@@ -211,11 +204,9 @@
                             <a rel="prev" href="styleguide.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-
                             <a rel="next" href="environment.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-
                         <div style="clear: both"></div>
                     </nav>
                 </div>
@@ -225,7 +216,6 @@
                     <a rel="prev" href="styleguide.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-
                     <a rel="next" href="environment.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
@@ -233,24 +223,16 @@
 
         </div>
 
-
-
-
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-
-
         <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-
         <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-
-
     </body>
 </html>
