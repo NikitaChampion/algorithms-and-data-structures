@@ -78,3 +78,7 @@ public:
 private:
     // your code
 };
+
+void mergeSort(Vector::Iterator begin, Vector::Iterator end);
+
+void insertionSort(Vector::Iterator begin, Vector::Iterator end);
