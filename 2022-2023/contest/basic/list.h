@@ -2,8 +2,8 @@ class Node {
 public:
     int data{};
     Node *next, *previous;
- 
-	Node();
+
+    Node();
 };
  
 class List {
