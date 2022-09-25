@@ -1,7 +1,8 @@
 class Node {
 public:
     int data{};
-    Node *next, *previous;
+    Node *next;
+    Node *previous;
 
     Node();
 };
@@ -25,6 +26,5 @@ public:
     void push(int value, size_t position);
 
     Node* head;
-
     Node* tail;
 };
