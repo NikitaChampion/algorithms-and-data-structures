@@ -11,7 +11,7 @@ struct Node {
     Color color;
 
     Node();
-    explicit Node(const T& x);
+    explicit Node(const T &x);
 };
 
 template <class ValueType>
@@ -19,19 +19,19 @@ class RBTree {
 public:
     struct Iterator {
         Iterator();
-        explicit Iterator(Node<ValueType>* node);
+        explicit Iterator(Node<ValueType> *node);
 
-        const ValueType& operator*() const;
-        const ValueType* operator->() const;
+        const ValueType &operator*() const;
+        const ValueType *operator->() const;
 
-        Iterator& operator++();
+        Iterator &operator++();
         Iterator operator++(int);
 
-        Iterator& operator--();
+        Iterator &operator--();
         Iterator operator--(int);
 
-        bool operator==(const Iterator& other) const;
-        bool operator!=(const Iterator& other) const;
+        bool operator==(const Iterator &other) const;
+        bool operator!=(const Iterator &other) const;
 
     private:
         // your code
@@ -53,9 +53,9 @@ public:
 
     bool empty() const;
 
-    ValueType *lowerBound(const ValueType &value) const;
+    Iterator lowerBound(const ValueType &value) const;
 
-    ValueType *find(const ValueType &value) const;
+    Iterator find(const ValueType &value) const;
 
     Iterator begin() const;
  
