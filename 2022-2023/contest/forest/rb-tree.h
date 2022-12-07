@@ -39,6 +39,8 @@ public:
 
     RBTree();
 
+    RBTree(std::initializer_list<ValueType> list);
+
     RBTree(const RBTree &other);
 
     RBTree<ValueType> &operator=(const RBTree &other);
