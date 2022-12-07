@@ -21,6 +21,11 @@ public:
     struct Iterator {
         Iterator();
         explicit Iterator(Node<K, V> *node);
+        Iterator(const Iterator &other);
+
+        Iterator &operator=(const Iterator &other);
+
+        ~Iterator();
 
         const std::pair<K, V> &operator*() const;
         const std::pair<K, V> *operator->() const;
@@ -39,9 +44,7 @@ public:
     };
 
     Map();
-
     Map(std::initializer_list<std::pair<K, V>> list);
-
     Map(const Map &other);
 
     Map<K, V> &operator=(const Map &other);
@@ -49,19 +52,15 @@ public:
     ~Map();
 
     void insert(const K &key, const V &value);
-
     void erase(const K &key);
 
     size_t size() const;
-
     bool empty() const;
 
     Iterator lowerBound(const K &key) const;
-
     Iterator find(const K &key) const;
 
     Iterator begin() const;
- 
     Iterator end() const;
 
     Node<K, V> *root;

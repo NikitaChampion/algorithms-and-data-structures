@@ -20,6 +20,11 @@ public:
     struct Iterator {
         Iterator();
         explicit Iterator(Node<ValueType> *node);
+        Iterator(const Iterator &other);
+
+        Iterator &operator=(const Iterator &other);
+
+        ~Iterator();
 
         const ValueType &operator*() const;
         const ValueType *operator->() const;
@@ -37,10 +42,8 @@ public:
         // your code
     };
 
-    RBTree();
-
+    RBTree()
     RBTree(std::initializer_list<ValueType> list);
-
     RBTree(const RBTree &other);
 
     RBTree<ValueType> &operator=(const RBTree &other);
@@ -48,19 +51,15 @@ public:
     ~RBTree();
 
     void insert(const ValueType &value);
-
     void erase(const ValueType &value);
 
     size_t size() const;
-
     bool empty() const;
 
     Iterator lowerBound(const ValueType &value) const;
-
     Iterator find(const ValueType &value) const;
 
     Iterator begin() const;
- 
     Iterator end() const;
 
     Node<ValueType> *root;
