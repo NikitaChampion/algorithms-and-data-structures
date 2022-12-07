@@ -14,7 +14,7 @@ struct Node {
     explicit Node(const T &x);
 };
 
-template <class ValueType>
+template <typename ValueType>
 class RBTree {
 public:
     struct Iterator {
