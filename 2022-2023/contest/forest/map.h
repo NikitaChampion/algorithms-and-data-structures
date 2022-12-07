@@ -21,11 +21,6 @@ public:
     struct Iterator {
         Iterator();
         explicit Iterator(Node<K, V> *node);
-        Iterator(const Iterator &other);
-
-        Iterator &operator=(const Iterator &other);
-
-        ~Iterator();
 
         const std::pair<K, V> &operator*() const;
         const std::pair<K, V> *operator->() const;

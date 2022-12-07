@@ -20,11 +20,6 @@ public:
     struct Iterator {
         Iterator();
         explicit Iterator(Node<ValueType> *node);
-        Iterator(const Iterator &other);
-
-        Iterator &operator=(const Iterator &other);
-
-        ~Iterator();
 
         const ValueType &operator*() const;
         const ValueType *operator->() const;
