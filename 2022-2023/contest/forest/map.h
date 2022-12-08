@@ -8,7 +8,7 @@ struct Node {
     V value;
     Node<K, V> *left;
     Node<K, V> *right;
-    Node<K, v> *parent;
+    Node<K, V> *parent;
     Color color;
 
     Node();
