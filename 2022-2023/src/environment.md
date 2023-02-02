@@ -117,8 +117,7 @@ int main() {
 <details>
 <summary>Linux</summary>
 
-Создайте новый проект. Зайдите в File -> Settings -> Build, Execution, Deployment -> CMake. Изначально там будет только один профиль Debug. Когда вы нажмете + добавится
-профиль Release, который пригодится в дальнейшем. Добавьте еще один профиль, назовите его ASAN. В CMake Options запишите
+Создайте новый проект. Зайдите в File -> Settings -> Build, Execution, Deployment -> CMake. Изначально там будет только один профиль Debug. Когда вы нажмете + добавится профиль Release, который пригодится в дальнейшем. Добавьте еще один профиль, назовите его ASAN. В CMake Options запишите
 
 ```bash
 -DCMAKE_BUILD_TYPE=ASAN
@@ -127,7 +126,7 @@ int main() {
 Отредактируйте ваш `CMakeLists.txt`. Он будет выглядеть примерно так:
 
 ```cmake
-cmake_minimum_required(VERSION 3.19)
+cmake_minimum_required(VERSION 3.24)
 project(your_project)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -147,10 +146,9 @@ add_executable(your_project main.cpp)
 <details>
 <summary>Mac OS</summary>
 
-По сравнению с Linux, на маке необходимо произвести ряд дополнительных действий, чтобы получить такое же поведение, как там.
+По сравнению с Linux, на маке необходимо произвести ряд дополнительных действий, чтобы получить такое же поведение, как и там.
 
-Создайте новый проект. Зайдите в File -> Settings -> Build, Execution, Deployment -> CMake. Изначально там будет только один профиль Debug. Когда вы нажмете + добавится
-профиль Release, который пригодится в дальнейшем. Добавьте еще два профиля, назовите их ASAN и UBSAN. В CMake Options запишите
+Создайте новый проект. Зайдите в CLion -> Preferences -> Build, Execution, Deployment -> CMake. Изначально там будет только один профиль Debug. Когда вы нажмете + добавится профиль Release, который пригодится в дальнейшем. Добавьте еще два профиля, назовите их ASAN и UBSAN. В CMake Options запишите
 
 ```bash
 -DCMAKE_BUILD_TYPE=ASAN
@@ -162,10 +160,12 @@ add_executable(your_project main.cpp)
 -DCMAKE_BUILD_TYPE=UBSAN
 ```
 
+соответственно.
+
 Отредактируйте ваш `CMakeLists.txt`. Он будет выглядеть примерно так:
 
 ```cmake
-cmake_minimum_required(VERSION 3.19)
+cmake_minimum_required(VERSION 3.24)
 project(your_project)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -181,22 +181,64 @@ set(CMAKE_CXX_FLAGS_UBSAN "-g -fsanitize=undefined"
 add_executable(your_project main.cpp)
 ```
 
-Затем обязательно установите `gcc` из `brew`, никогда не используйте системный `gcc`. Выполните
+Далее, по умолчанию на маке стоит `clang`. Также `gcc` симлинкается на `clang`. Но системный `clang`, к сожалению, не поддерживает санитайзеры (при запуске ASAN / UBSAN) упадет с ошибкой "detect_leaks is not supported on this platform". Поэтому нам нужно будет установить собственные компиляторы. Далее приведен гайд, как это можно сделать:
+
+Для начала установите [homebrew](https://brew.sh/), если он у вас еще не установлен.
+
+Затем выберите каким компилятором вы будете пользоваться: `gcc` или `clang` (лично я использую и рекомендую установливать оба; `gcc` на M1 не будет запускаться с санитайзерами). Дебагать в `clang`-е гораздо удобнее. `gcc`, в свою очередь, вам придется использовать во многих задачах со взломами, где вам потребуется покопаться в кишках `gcc`.
+
+<details>
+<summary>clang</summary>
+
+Выполните команду
+
+```bash
+brew install llvm
+```
+
+Далее вам нужно найти путь до `clang`-а, который вместе с `llvm` из brew приехал. С этим вам помогут команды
+
+```bash
+brew info llvm  # выведет информацию про установленный пакет
+```
+
+```bash
+brew --prefix llvm  # выведет путь до директории, на Intel маках обычно /usr/local/bin/llvm, на M1 маках – /opt/homebrew/opt/llvm
+```
+
+Вас интересует `clang`. Зайдите в папку `bin`, в ней должен лежать `clang`.
+
+Далее необходимо прописать путь к компилятору в настройках CLion. Для этого зайдите в CLion -> Preferences -> Build, Execution, Deployment -> Toolchains и в C++ compiler пропишите полный путь к компилятору.
+
+</details>
+
+<details>
+<summary>gcc</summary>
+
+Выполните команду
 
 ```bash
 brew install gcc
 ```
 
-Чтобы проверить, что `gcc` установился правильно, выполните (11 нужно заменить на версию `gсс`, установленную `brew`):
+Чтобы посмотреть на версию установленного компилятора, выполните команду
 
 ```bash
-g++-11 --version  # выведет полную версию g++
-which g++-11  # выведет полный путь к компилятору, например /usr/local/bin/g++-11
+brew info gcc  # выведет информацию про установленный пакет
 ```
 
-Далее необходимо прописать путь к новому компилятору в настройках CLion. Для этого зайдите в CLion -> Preferences -> Build, Execution, Deployment -> Toolchains и в C++ compiler пропишите полный путь к компилятору.
+Чтобы проверить, что `gcc` установился правильно, выполните (12 нужно заменить на версию `gсс`, установленную `brew`):
 
-Далее, **обратите внимание**, что по умолчанию под маком ASan не включает проверку на утечки памяти. Чтобы этого избежать, зайдите в CLion -> Preferences -> Build, Execution, Deployment -> Dynamic Analysis Tools -> Sanitizers и в конце строчки AddressSanitizer допишите строчку
+```bash
+g++-12 --version  # выведет полную версию g++
+which g++-12  # выведет полный путь к компилятору, например /usr/local/bin/g++-12 или /opt/homebrew/bin/g++-12
+```
+
+Далее необходимо прописать путь к компилятору в настройках CLion. Для этого зайдите в CLion -> Preferences -> Build, Execution, Deployment -> Toolchains и в C++ compiler пропишите полный путь к компилятору.
+
+</details>
+
+Далее, **обратите внимание**, что по умолчанию под маком ASan не включает проверку на утечки памяти. Чтобы этого избежать, зайдите в CLion -> Preferences -> Build, Execution, Deployment -> Dynamic Analysis Tools -> Sanitizers и в конце строчки AddressSanitizer (если там что-то уже написано, то через пробел) допишите строчку
 
 ```bash
 detect_leaks=1
@@ -272,7 +314,7 @@ int main() {
 3. Выполните следующую команду:
 
     ```bash
-    g++-11 -std=c++17 -E -P -C -nostdinc -nostdinc++ -I system-headers -D _include_=#include solution.cpp -o output.cpp
+    g++-12 -std=c++17 -E -P -C -nostdinc -nostdinc++ -I system-headers -D _include_=#include solution.cpp -o output.cpp
     ```
 
     Здесь стоит отметить следующее:
