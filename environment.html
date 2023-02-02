@@ -4,8 +4,10 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Как настроить окружение на своем компьютере - Algorithms and Data Structures</title>
+
+
         <!-- Custom HTML head -->
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
@@ -16,27 +18,30 @@
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
         <link rel="stylesheet" href="css/print.css" media="print">
+
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
         <link rel="stylesheet" href="fonts/fonts.css">
+
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
         <link rel="stylesheet" href="tomorrow-night.css">
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+
         <!-- MathJax -->
-        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
     <body>
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+        <script>
             var path_to_root = "";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -52,7 +57,7 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        <script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
@@ -64,7 +69,7 @@
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
+        <script>
             var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
@@ -85,7 +90,7 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="menu-bar-hover-placeholder"></div>
+                                <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
@@ -95,7 +100,7 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
@@ -115,6 +120,7 @@
                         <a href="https://github.com/NikitaChampion/Data-Structures" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
+
                     </div>
                 </div>
 
@@ -128,8 +134,9 @@
                         </ul>
                     </div>
                 </div>
+
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+                <script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
@@ -225,12 +232,11 @@ int main() {
 </details>
 <details>
 <summary>Linux</summary>
-<p>Создайте новый проект. Зайдите в File -&gt; Settings -&gt; Build, Execution, Deployment -&gt; CMake. Изначально там будет только один профиль Debug. Когда вы нажмете + добавится
-профиль Release, который пригодится в дальнейшем. Добавьте еще один профиль, назовите его ASAN. В CMake Options запишите</p>
+<p>Создайте новый проект. Зайдите в File -&gt; Settings -&gt; Build, Execution, Deployment -&gt; CMake. Изначально там будет только один профиль Debug. Когда вы нажмете + добавится профиль Release, который пригодится в дальнейшем. Добавьте еще один профиль, назовите его ASAN. В CMake Options запишите</p>
 <pre><code class="language-bash">-DCMAKE_BUILD_TYPE=ASAN
 </code></pre>
 <p>Отредактируйте ваш <code>CMakeLists.txt</code>. Он будет выглядеть примерно так:</p>
-<pre><code class="language-cmake">cmake_minimum_required(VERSION 3.19)
+<pre><code class="language-cmake">cmake_minimum_required(VERSION 3.24)
 project(your_project)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -246,16 +252,16 @@ add_executable(your_project main.cpp)
 </details>
 <details>
 <summary>Mac OS</summary>
-<p>По сравнению с Linux, на маке необходимо произвести ряд дополнительных действий, чтобы получить такое же поведение, как там.</p>
-<p>Создайте новый проект. Зайдите в File -&gt; Settings -&gt; Build, Execution, Deployment -&gt; CMake. Изначально там будет только один профиль Debug. Когда вы нажмете + добавится
-профиль Release, который пригодится в дальнейшем. Добавьте еще два профиля, назовите их ASAN и UBSAN. В CMake Options запишите</p>
+<p>По сравнению с Linux, на маке необходимо произвести ряд дополнительных действий, чтобы получить такое же поведение, как и там.</p>
+<p>Создайте новый проект. Зайдите в CLion -&gt; Preferences -&gt; Build, Execution, Deployment -&gt; CMake. Изначально там будет только один профиль Debug. Когда вы нажмете + добавится профиль Release, который пригодится в дальнейшем. Добавьте еще два профиля, назовите их ASAN и UBSAN. В CMake Options запишите</p>
 <pre><code class="language-bash">-DCMAKE_BUILD_TYPE=ASAN
 </code></pre>
 <p>и</p>
 <pre><code class="language-bash">-DCMAKE_BUILD_TYPE=UBSAN
 </code></pre>
+<p>соответственно.</p>
 <p>Отредактируйте ваш <code>CMakeLists.txt</code>. Он будет выглядеть примерно так:</p>
-<pre><code class="language-cmake">cmake_minimum_required(VERSION 3.19)
+<pre><code class="language-cmake">cmake_minimum_required(VERSION 3.24)
 project(your_project)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -270,15 +276,37 @@ set(CMAKE_CXX_FLAGS_UBSAN &quot;-g -fsanitize=undefined&quot;
 
 add_executable(your_project main.cpp)
 </code></pre>
-<p>Затем обязательно установите <code>gcc</code> из <code>brew</code>, никогда не используйте системный <code>gcc</code>. Выполните</p>
+<p>Далее, по умолчанию на маке стоит <code>clang</code>. Также <code>gcc</code> симлинкается на <code>clang</code>. Но системный <code>clang</code>, к сожалению, не поддерживает санитайзеры (при запуске ASAN / UBSAN) упадет с ошибкой &quot;detect_leaks is not supported on this platform&quot;. Поэтому нам нужно будет установить собственные компиляторы. Далее приведен гайд, как это можно сделать:</p>
+<p>Для начала установите <a href="https://brew.sh/">homebrew</a>, если он у вас еще не установлен.</p>
+<p>Затем выберите каким компилятором вы будете пользоваться: <code>gcc</code> или <code>clang</code> (лично я использую и рекомендую установливать оба; <code>gcc</code> на M1 не будет запускаться с санитайзерами). Дебагать в <code>clang</code>-е гораздо удобнее. <code>gcc</code>, в свою очередь, вам придется использовать во многих задачах со взломами, где вам потребуется покопаться в кишках <code>gcc</code>.</p>
+<details>
+<summary>clang</summary>
+<p>Выполните команду</p>
+<pre><code class="language-bash">brew install llvm
+</code></pre>
+<p>Далее вам нужно найти путь до <code>clang</code>-а, который вместе с <code>llvm</code> из brew приехал. С этим вам помогут команды</p>
+<pre><code class="language-bash">brew info llvm  # выведет информацию про установленный пакет
+</code></pre>
+<pre><code class="language-bash">brew --prefix llvm  # выведет путь до директории, на Intel маках обычно /usr/local/bin/llvm, на M1 маках – /opt/homebrew/opt/llvm
+</code></pre>
+<p>Вас интересует <code>clang</code>. Зайдите в папку <code>bin</code>, в ней должен лежать <code>clang</code>.</p>
+<p>Далее необходимо прописать путь к компилятору в настройках CLion. Для этого зайдите в CLion -&gt; Preferences -&gt; Build, Execution, Deployment -&gt; Toolchains и в C++ compiler пропишите полный путь к компилятору.</p>
+</details>
+<details>
+<summary>gcc</summary>
+<p>Выполните команду</p>
 <pre><code class="language-bash">brew install gcc
 </code></pre>
-<p>Чтобы проверить, что <code>gcc</code> установился правильно, выполните (11 нужно заменить на версию <code>gсс</code>, установленную <code>brew</code>):</p>
-<pre><code class="language-bash">g++-11 --version  # выведет полную версию g++
-which g++-11  # выведет полный путь к компилятору, например /usr/local/bin/g++-11
+<p>Чтобы посмотреть на версию установленного компилятора, выполните команду</p>
+<pre><code class="language-bash">brew info gcc  # выведет информацию про установленный пакет
 </code></pre>
-<p>Далее необходимо прописать путь к новому компилятору в настройках CLion. Для этого зайдите в CLion -&gt; Preferences -&gt; Build, Execution, Deployment -&gt; Toolchains и в C++ compiler пропишите полный путь к компилятору.</p>
-<p>Далее, <strong>обратите внимание</strong>, что по умолчанию под маком ASan не включает проверку на утечки памяти. Чтобы этого избежать, зайдите в CLion -&gt; Preferences -&gt; Build, Execution, Deployment -&gt; Dynamic Analysis Tools -&gt; Sanitizers и в конце строчки AddressSanitizer допишите строчку</p>
+<p>Чтобы проверить, что <code>gcc</code> установился правильно, выполните (12 нужно заменить на версию <code>gсс</code>, установленную <code>brew</code>):</p>
+<pre><code class="language-bash">g++-12 --version  # выведет полную версию g++
+which g++-12  # выведет полный путь к компилятору, например /usr/local/bin/g++-12 или /opt/homebrew/bin/g++-12
+</code></pre>
+<p>Далее необходимо прописать путь к компилятору в настройках CLion. Для этого зайдите в CLion -&gt; Preferences -&gt; Build, Execution, Deployment -&gt; Toolchains и в C++ compiler пропишите полный путь к компилятору.</p>
+</details>
+<p>Далее, <strong>обратите внимание</strong>, что по умолчанию под маком ASan не включает проверку на утечки памяти. Чтобы этого избежать, зайдите в CLion -&gt; Preferences -&gt; Build, Execution, Deployment -&gt; Dynamic Analysis Tools -&gt; Sanitizers и в конце строчки AddressSanitizer (если там что-то уже написано, то через пробел) допишите строчку</p>
 <pre><code class="language-bash">detect_leaks=1
 </code></pre>
 <p>Теперь вы легко можете переключаться между разными видами сборок: Debug для пошагового дебага, Release для тестирования производительности, ASan для отлавливаний ошибок с памятью (в том числе и <code>memory leak</code>-ов) и UBSan для отлавливаний <code>undefined behavior</code>.</p>
@@ -330,7 +358,7 @@ _include_ &lt;iostream&gt;
 </li>
 <li>
 <p>Выполните следующую команду:</p>
-<pre><code class="language-bash">g++-11 -std=c++17 -E -P -C -nostdinc -nostdinc++ -I system-headers -D _include_=#include solution.cpp -o output.cpp
+<pre><code class="language-bash">g++-12 -std=c++17 -E -P -C -nostdinc -nostdinc++ -I system-headers -D _include_=#include solution.cpp -o output.cpp
 </code></pre>
 <p>Здесь стоит отметить следующее:</p>
 <ol>
@@ -365,9 +393,11 @@ _include_ &lt;iostream&gt;
                             <a rel="prev" href="assignments.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
+
                             <a rel="next" href="troubleshooting.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
+
                         <div style="clear: both"></div>
                     </nav>
                 </div>
@@ -377,6 +407,7 @@ _include_ &lt;iostream&gt;
                     <a rel="prev" href="assignments.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
+
                     <a rel="next" href="troubleshooting.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
@@ -384,16 +415,24 @@ _include_ &lt;iostream&gt;
 
         </div>
 
-        <script type="text/javascript">
+
+
+
+        <script>
             window.playground_copyable = true;
         </script>
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
+
+
     </body>
 </html>

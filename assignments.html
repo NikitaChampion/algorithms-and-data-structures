@@ -4,8 +4,10 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Как сдавать домашние задания - Algorithms and Data Structures</title>
+
+
         <!-- Custom HTML head -->
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
@@ -16,27 +18,30 @@
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
         <link rel="stylesheet" href="css/print.css" media="print">
+
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
         <link rel="stylesheet" href="fonts/fonts.css">
+
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
         <link rel="stylesheet" href="tomorrow-night.css">
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+
         <!-- MathJax -->
-        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
     <body>
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+        <script>
             var path_to_root = "";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -52,7 +57,7 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        <script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
@@ -64,7 +69,7 @@
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
+        <script>
             var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
@@ -85,7 +90,7 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="menu-bar-hover-placeholder"></div>
+                                <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
@@ -95,7 +100,7 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
@@ -115,6 +120,7 @@
                         <a href="https://github.com/NikitaChampion/Data-Structures" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
+
                     </div>
                 </div>
 
@@ -128,8 +134,9 @@
                         </ul>
                     </div>
                 </div>
+
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+                <script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
@@ -142,12 +149,11 @@
                         <h1 id="Как-сдавать-домашние-задания"><a class="header" href="#Как-сдавать-домашние-задания">Как сдавать домашние задания</a></h1>
 <p>На курсе есть несколько видов активностей, которые влияют на вашу оценку:</p>
 <ul>
-<li>Контесты</li>
+<li>Контесты (домашние задания в системе <a href="https://contest.yandex.ru">Яндекс.Контест</a>)</li>
 <li>КДЗ</li>
-<li>Работа на семинарах</li>
+<li>Тесты</li>
 <li>Экзамен</li>
 </ul>
-<p>Все задания сдаются и проверяются автоматически в системе <a href="https://contest.yandex.ru">Яндекс.Контест</a>.</p>
 <h2 id="Домашние-задания-в-контесте"><a class="header" href="#Домашние-задания-в-контесте">Домашние задания в контесте</a></h2>
 <p>Код программ, которые вы будете сдавать в рамках нашего курса, будет проверяться автоматически в системе <a href="https://contest.yandex.ru">Яндекс.Контест</a>.</p>
 <h3 id="Требования-к-вводу-выводу"><a class="header" href="#Требования-к-вводу-выводу">Требования к вводу-выводу</a></h3>
@@ -156,9 +162,9 @@
 <p>Система выдает один из следующих результатов на каждый запуск.</p>
 <ul>
 <li><strong>OK</strong> — задача прошла успешно.</li>
-<li><strong>PCF</strong> — Precompile check failed — code style violation, вы нарушили какие-то из требований по оформлению кода. Чтобы узнать, какие именно, нажмите на ссылку отчет и почитайте. Также вы можете получить такую ошибку, если использовали при реализации какую-нибудь стандартную структуру данных или какой-нибудь стандартный алгоритм из библиотеки STL, который в данной задаче было использовать запрещено в условии задачи.</li>
-<li><strong>CE</strong> — Compilation Error — ваша программа не компилируется на сервере. Чтобы узнать, почему, нажмите на ссылку «отчет» (она появляется при наведении курсора на строку посылки) и посмотрите, какие ошибки нашел компилятор.</li>
-<li><strong>WA</strong> — Wrong Answer — на некотором тесте программа выдала неверный ответ. Вам не предоставляется возможность увидеть, что это был за тест. Внимательно посмотрите на ограничения в задаче, попробуйте придумать свой тест, на котором ответ будет неправильный.</li>
+<li><strong>PCF</strong> — Precompile check failed — code style violation, вы нарушили какие-то из требований по оформлению кода. Чтобы узнать, какие именно, нажмите на ссылку «отчёт» (она появляется при наведении курсора на строку посылки) и почитайте. Также вы можете получить такую ошибку, если использовали при реализации какую-нибудь стандартную структуру данных или какой-нибудь стандартный алгоритм из библиотеки STL, который в данной задаче было использовать запрещено.</li>
+<li><strong>CE</strong> — Compilation Error — ваша программа не компилируется на сервере. Чтобы узнать, почему, нажмите на ссылку «отчёт» (она появляется при наведении курсора на строку посылки) и посмотрите, какие ошибки нашел компилятор.</li>
+<li><strong>WA</strong> — Wrong Answer — на некотором тесте программа выдала неверный ответ. Вам не предоставляется возможность увидеть содержимое теста (если это тест не из условия). Внимательно посмотрите на ограничения в задаче, попробуйте придумать свой тест, на котором ответ будет неправильный.</li>
 <li><strong>PE</strong> — Presentation Error — ошибка представления. Например, просили вывести число, а выведена строка. В этом случае вы можете получить <strong>Wrong Answer</strong> либо <strong>Presentation error</strong>, это не гарантируется заранее.</li>
 <li><strong>TL</strong> — Time Limit exceeded — ваша программа работает слишком долго. Значит, у вас неправильное асимптотически решение, так как таймлимиты будут выставляться в 1,5–2 раза больше, чем время работы авторского решения на максимальном тесте, и этого должно хватать любому правильному решению.</li>
 <li><strong>ML</strong> — Memory Limit exceeded — ваша программа использует слишком много памяти.</li>
@@ -166,33 +172,32 @@
 </ul>
 <p><strong>При сдаче домашних задач баллы за посылки и штраф по времени не снимаются. Проверяется последний код, который набрал больше всего баллов.</strong></p>
 <h3 id="Сроки"><a class="header" href="#Сроки">Сроки</a></h3>
-<p>На сдачу домашних задач дается примерно 9,5 суток с момента выдачи контеста.
-Все дедлайны будут прописаны на странице курса в <a href="https://t.me/algosy2022">телеграмме</a>.</p>
-<h3 id="code-review"><a class="header" href="#code-review">Code Review</a></h3>
-<p>После тестирования в системе код поступает на внутреннюю проверку. Проверяется каждая задача отдельно и независимо (если противное явно не указано в условии и не было соответствующего объявления), <strong>максимальный балл за задачу — 10</strong>.</p>
-<p>В основном код проверяется на</p>
-<ol>
-<li>Соответствие стилю (смотрите документ со стайлгайдом)</li>
-<li>Корректность (код должен работать корректно на всех возможных входных данных, которые подходят под условие и ограничения в задаче)</li>
-<li>Оптимальность (код должен быть оптимальным (не должна использоваться лишняя память и т.д.))</li>
-</ol>
-<h3 id="Текущие-критерии-оценки"><a class="header" href="#Текущие-критерии-оценки">Текущие критерии оценки</a></h3>
+<p>Мягкий дедлайн ставится на дату примерно через 11 суток с момента выдачи контеста.</p>
+<p>За каждый день просрочки мягкого дедлайна отправленной посылки по задаче ставится -2 балла этой посылке. При этом берется максимум из 0 и полученного данным образом балла.</p>
+<p>То есть жесткий дедлайн – мягкий дедлайн + 4 дня. За посылки, отправленные после жесткого дедлайна соответственно ставится 0.</p>
+<p>Все дедлайны будут прописаны в <a href="https://t.me/+Vbuep7k9GVtmODMy">канале курса в telegram</a>.</p>
+<h3 id="Критерии-оценки-обычных-контестов"><a class="header" href="#Критерии-оценки-обычных-контестов">Критерии оценки обычных контестов</a></h3>
 <ol start="0">
 <li>Нет решения — <strong>0 баллов (база)</strong></li>
 <li>Несоответствие кодстайлу <strong>0 баллов итог</strong></li>
-<li>Прохождение тестов из условия / компиляция <strong>+ 1 балл</strong>, в зависимости от типа задачи</li>
-<li>Прохождение k тестов <strong>+ 7 баллов</strong>, в зависимости от групп в задаче</li>
-<li>Код выдает правильный ответ для любых входных данных, подходящих под условие и ограничения в задаче (offline-тестирование) <strong>+ 2 балла</strong></li>
+<li>Прохождение тестов из условия <strong>+ 1 балл</strong></li>
+<li>Online-тестирование <strong>+ 7 баллов</strong>, в зависимости от групп в задаче</li>
+<li>Offline-тестирование <strong>+ 2 балла</strong></li>
 </ol>
-<p>Пункт 2 проверяется только при прохождении тестов из условия.</p>
-<p>Пункт 4 проверяется только при прохождении всех тестов.</p>
-<p>При выявлении <em>списывания</em> списанная задача <strong>обнуляется</strong> всем участникам списывания. Если в контесте &gt; 1 списанной задачи, то зануляется весь контест.</p>
-<p>При использовании <em>читерства</em> в задаче она также <strong>зануляется</strong> (к примеру, в задаче явным образом запрещалось использовать <code>std::sort</code> или что-то аналогичное, а Вы взяли и заюзали каким-то хитрым образом).</p>
-<p>Если Вы не согласны с результатом проверки, то можете проапеллировать результат, написав проверяющему в vk / tg.</p>
+<p>Пункт 3 проверяется только при прохождении тестов из условия.</p>
+<p>Пункт 4 проверяется только при прохождении всех тестов из online-групп.</p>
+<p>Оцениваться группы в пунктах 3-4 могут по-разному:</p>
+<ul>
+<li>два режима прерывания групп: при первой ошибке в группе (оставшиеся тесты в группе не проверяются) и без прерываний. По умолчанию до offline-проверки включен режим &quot;при первой ошибке&quot;. Во время offline-проверки все решения пересуживаются уже со вторым режимом.</li>
+<li>два режима оценивания групп: &quot;<code>полный_балл_за_группу * пройденные_тесты_в_группе/тесты_в_группе</code>&quot; и &quot;<code>0</code> или <code>полный_балл_за_группу</code>&quot;. Второй режим включается для задач на написание какого-то алгоритма (к примеру, &quot;напишите сортировку слиянием&quot;). Первый режим включается для задач всех остальных типов, если не написано иное.</li>
+</ul>
 <p>Пункты 3 и 4 не фиксируют кол-во баллов. От задачи к задаче разбалловка баллов в 3 и 4 может меняться.</p>
+<p>При выявлении <em>списывания</em> списанная задача <strong>обнуляется</strong> всем участникам списывания. Если в контесте &gt; 1 списанной задачи, то зануляется весь контест.</p>
+<p>При использовании <em>читерства</em> в задаче она также <strong>зануляется</strong> (к примеру, в контесте / задаче явным образом запрещалось использовать <code>std::sort</code> или что-то аналогичное, а Вы взяли и заюзали каким-то хитрым образом).</p>
+<p>Если Вы не согласны с результатом проверки, то можете проапеллировать результат, написав на <a href="abessmertnyi@hse.ru">почту</a>. В чат курса / лички ассистентов / преподавателей писать <strong>не надо</strong>.</p>
 <h2 id="КДЗ"><a class="header" href="#КДЗ">КДЗ</a></h2>
 <p>TODO</p>
-<h2 id="Работа-на-семинарах"><a class="header" href="#Работа-на-семинарах">Работа на семинарах</a></h2>
+<h2 id="Тесты"><a class="header" href="#Тесты">Тесты</a></h2>
 <p>TODO</p>
 <h2 id="Экзамен"><a class="header" href="#Экзамен">Экзамен</a></h2>
 <p>TODO</p>
@@ -204,9 +209,11 @@
                             <a rel="prev" href="styleguide.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
+
                             <a rel="next" href="environment.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
+
                         <div style="clear: both"></div>
                     </nav>
                 </div>
@@ -216,6 +223,7 @@
                     <a rel="prev" href="styleguide.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
+
                     <a rel="next" href="environment.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
@@ -223,16 +231,24 @@
 
         </div>
 
-        <script type="text/javascript">
+
+
+
+        <script>
             window.playground_copyable = true;
         </script>
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
+
+
     </body>
 </html>
